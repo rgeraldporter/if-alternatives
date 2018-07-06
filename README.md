@@ -1,8 +1,22 @@
-# Alt-if
+# Alternatives to `if`
 
-### Alternatives to `if`
+This is a collection of alternatives to using `if` and other conditional block-statements in Javascript.
+
+Some reasons to consider alternatives:
+
+ * `if` is usually a block-statement, and has a tendency to beget more block statements and nesting which make reading code more difficult
+ * many `if`s can usually indicate you really need to break your functions down further, and that your function is doing too much at once
+ * because it is a block-level element, the block can easily grow into something that clearly should be a function, or even many functions
+ * because `const` and `let` respect `if`'s blocks as scope boundaries, using `if` for assignment prevents you from assigning `const` within, and requires a blank `let` declaration outside of scope
+ * `switch` statements can easily "leak" when missing a `break` statement, and create "branches" of code without braces, hiding these branches somewhat
+ * each `if` creates a logical branch that cannot be independantly tested
+ * if functional programming is something you want to do more of, you'll generally want less `if`
 
 # Types of ifs
+
+Each example is a very basic form of a common conditional pattern. These suggestions are meant to give you some ideas of alternatives.
+
+Some examples, such as the "incongruent `if`/`else`" examples could be considered antipatterns and are themselves likely to be considered by most as poorly-formed `if` statements.
 
 ## Basic `if`
 
@@ -15,7 +29,7 @@ if (x === 1) {
 
 ### Alternatives
 
-Basic, returns `y` as false for default.
+Basic, returns `y` as `false` for default.
 
 ```js
 // ternary with false default
@@ -54,7 +68,7 @@ const y = x === 1 ? 2 : 1;
 
 #### Functional ternary
 
-Very similar, but reusable and memoizable.
+Very similar, but reusable and [memoizable](https://medium.freecodecamp.org/understanding-memoize-in-javascript-51d07d19430e).
 
 ```js
 // functional ternary
@@ -108,10 +122,10 @@ const y = x in vals ? vals[x] : vals.default;
 
 #### Object key-value pairs with default symbol
 
-Very similar, more fancy, and prevents namespace collisions: use a symbol for your default value key. (The example above with `default` key would likely misbehave if `x` ever had a value called `default`.)
+Very similar, and prevents namespace collisions: use a symbol for your default value key. (The example above with `default` key would likely misbehave if `x` ever had a value called `default`.)
 
 ```js
-// key-value pair list with super-fancy symbol
+// key-value pair list with symbol
 // this avoids namespace collision in key names
 const $$defaultSymbol = Symbol();
 const vals = {

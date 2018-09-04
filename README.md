@@ -4,15 +4,16 @@ This is a collection of alternatives to using `if` and other conditional block s
 
 Some reasons to consider alternatives:
 
- * `if` is block statement that has a tendency to beget nesting block statements ad infinitum, and become progressively harder to read as they are added to
- * many `if`s can usually indicate you really need to break your functions down further, and that your function is doing too much at once
- * because it is a block-level element, the block can easily grow into something that clearly should be a function, or even many functions
- * because `const` and `let` respect `if`'s blocks as scope boundaries, using `if` for assignment prevents you from assigning `const` within, and requires a blank `let` declaration outside of scope
- * `switch` statements can easily "leak" when missing a `break` statement, and create "branches" of code without braces, hiding these branches somewhat
- * each `if` creates a logical branch that cannot be independantly tested
- * if functional programming is something you want to do more of, you'll generally want less `if`
+ * boost immutability: because `const` is scope-level, it is unusable in functions using `if` except within the blocks -- for assignment, `let` or `var` are the only options, which are mutable
+ * quality of code life: `if` is block statement that has a tendency to beget nesting block statements ad infinitum, and become progressively harder to read as they are added to
+ * avoid refactoring later: many `if`s can usually indicate you really need to break your functions down further, and that your function is doing too much at once
+ * often it should really just be a function: because it is a block-level element, the block can easily grow into something that clearly should be a function, or even many functions
+ * control side-effects: `switch` statements can easily "leak" when missing a `break` statement, and create "branches" of code without braces, hiding these branches somewhat
+ * testability: each `if` creates a logical branch that cannot be independantly tested
+ * functional: if functional programming is something you want to do more of, you'll generally want less `if`
+ * be safer with type: when you convert an `if` into a function, you can test for types in TypeScript and Flow
 
-# Types of ifs
+# Kinds of ifs
 
 Each example is a very basic form of a common conditional pattern. These suggestions are meant to give you some ideas of alternatives.
 

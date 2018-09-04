@@ -1,10 +1,10 @@
 # Alternatives to `if`
 
-This is a collection of alternatives to using `if` and other conditional block-statements in Javascript.
+This is a collection of alternatives to using `if` and other conditional block statements in Javascript.
 
 Some reasons to consider alternatives:
 
- * `if` is usually a block-statement, and has a tendency to beget more block statements and nesting which make reading code more difficult
+ * `if` is block statement that has a tendency to beget nesting block statements ad infinitum, and become progressively harder to read as they are added to
  * many `if`s can usually indicate you really need to break your functions down further, and that your function is doing too much at once
  * because it is a block-level element, the block can easily grow into something that clearly should be a function, or even many functions
  * because `const` and `let` respect `if`'s blocks as scope boundaries, using `if` for assignment prevents you from assigning `const` within, and requires a blank `let` declaration outside of scope
@@ -29,12 +29,16 @@ if (x === 1) {
 
 ### Alternatives
 
+#### Ternary assignment
+
 Basic, returns `y` as `false` for default.
 
 ```js
 // ternary with false default
 const y = x === 1 ? 2 : false;
 ```
+
+#### Functional ternary
 
 Similar, but has a reusable function that can be memoized.
 
@@ -260,4 +264,44 @@ const condTable = ([x, z, w]) => [
 
 condTable([x, z, w])
     .find(a => (a[0] ? a[1](a[2]) : false));
+```
+
+## Nested `if`
+
+```js
+let y, z;
+if (x === 1) {
+    y = 2;
+    if (w > 4) {
+        z = 1;
+    }
+} else {
+    y = 1;
+    if (w < 4) {
+        z = 2;
+    }
+}
+```
+
+### Alternatives
+
+#### Functional flattening
+
+Take each layer and transpose each `if` to a function, or assignment.
+
+```js
+const fn1 = () => {
+    y = 2;
+    z = w > 4 ? 1 : z;
+};
+
+const fn2 = () => {
+    y = 1;
+    z = w < 4 ? 2 : z;
+};
+
+const assignVals = x =>
+    x === 1
+        ? fn1()
+        : fn2();
 ```

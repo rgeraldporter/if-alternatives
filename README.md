@@ -136,6 +136,7 @@ Very similar, and prevents namespace collisions: use a symbol for your default v
 ```js
 // key-value pair list with symbol
 // this avoids namespace collision in key names
+// note that `$$` is merely a naming style suggestion for Symbols, it is not a requirement at all
 const $$defaultSymbol = Symbol();
 const vals = {
     1: 2,

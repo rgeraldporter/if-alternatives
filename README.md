@@ -131,7 +131,7 @@ const y = x in vals ? vals[x] : vals.default;
 
 #### Object key-value pairs with default symbol
 
-Very similar, and prevents namespace collisions: use a symbol for your default value key. (The example above with `default` key would likely misbehave if `x` ever had a value called `default`.)
+Very similar, and prevents namespace collisions: use a symbol for your default value key. (The example above with `default` key would likely misbehave if `x` ever had a value called `'default'`.)
 
 ```js
 // key-value pair list with symbol

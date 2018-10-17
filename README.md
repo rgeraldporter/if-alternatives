@@ -10,8 +10,12 @@ Some reasons to consider alternatives:
  * often it should really just be a function: because it is a block-level element, the block can easily grow into something that clearly should be a function, or even many functions
  * control side-effects: `switch` statements can easily "leak" when missing a `break` statement, and create "branches" of code without braces, hiding these branches somewhat
  * testability: each `if` creates a logical branch that cannot be independantly tested
- * functional: if functional programming is something you want to do more of, you'll generally want less `if`
+ * functional: if functional programming is something you want to do more of, you'll generally want less `if` and `let`
  * be safer with type: when you convert an `if` into a function, you can test for types in TypeScript and Flow
+ 
+# Caveat
+
+The following examples may or may not adhere to a _functional programming_ style, but can be used as a stepping stone towards more functional code.
 
 # Kinds of ifs
 

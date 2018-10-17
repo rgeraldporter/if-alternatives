@@ -1,6 +1,6 @@
 # Alternatives to `if`
 
-This is a collection of alternatives to using `if` and other conditional block statements in Javascript.
+This is a collection of alternatives to using `if` and other conditional block statements in plain Javascript without module or library dependencies.
 
 Some reasons to consider alternatives:
 

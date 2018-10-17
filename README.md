@@ -15,7 +15,7 @@ Some reasons to consider alternatives:
  
 # Caveat
 
-The following examples may or may not adhere to a _functional programming_ style, but can be used as a stepping stone towards more functional code.
+The following examples may or may not adhere to a _functional programming_ style, but can be used as a stepping stone towards more functional code. I tend to prefer functional, but it can be a huge leap to go straight to pure functional.
 
 # Kinds of ifs
 
